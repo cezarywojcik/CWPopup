@@ -20,8 +20,6 @@
 		CEE077B417C5BEB70012C196 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779417C5BEB70012C196 /* Foundation.framework */; };
 		CEE077B517C5BEB70012C196 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779817C5BEB70012C196 /* UIKit.framework */; };
 		CEE077B617C5BEB70012C196 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779A17C5BEB70012C196 /* CoreData.framework */; };
-		CEE077BE17C5BEB70012C196 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEE077BC17C5BEB70012C196 /* InfoPlist.strings */; };
-		CEE077C017C5BEB70012C196 /* CWPopupDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE077BF17C5BEB70012C196 /* CWPopupDemoTests.m */; };
 		CEE077CE17C5BEDA0012C196 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE077CC17C5BEDA0012C196 /* MainViewController.m */; };
 		CEE077CF17C5BEDA0012C196 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE077CD17C5BEDA0012C196 /* MainViewController.xib */; };
 		CEE077D317C5BF580012C196 /* UIViewController+CWPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE077D217C5BF580012C196 /* UIViewController+CWPopup.m */; };
@@ -55,9 +53,6 @@
 		CEE077AB17C5BEB70012C196 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CEE077B117C5BEB70012C196 /* CWPopupDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWPopupDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE077B217C5BEB70012C196 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		CEE077BB17C5BEB70012C196 /* CWPopupDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CWPopupDemoTests-Info.plist"; sourceTree = "<group>"; };
-		CEE077BD17C5BEB70012C196 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CEE077BF17C5BEB70012C196 /* CWPopupDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWPopupDemoTests.m; sourceTree = "<group>"; };
 		CEE077CB17C5BEDA0012C196 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		CEE077CC17C5BEDA0012C196 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		CEE077CD17C5BEDA0012C196 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -98,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				CEE0779C17C5BEB70012C196 /* CWPopupDemo */,
-				CEE077B917C5BEB70012C196 /* CWPopupDemoTests */,
 				CEE0779317C5BEB70012C196 /* Frameworks */,
 				CEE0779217C5BEB70012C196 /* Products */,
 			);
@@ -146,24 +140,6 @@
 				CEE0779F17C5BEB70012C196 /* InfoPlist.strings */,
 				CEE077A217C5BEB70012C196 /* main.m */,
 				CEE077A417C5BEB70012C196 /* CWPopupDemo-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CEE077B917C5BEB70012C196 /* CWPopupDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				CEE077BF17C5BEB70012C196 /* CWPopupDemoTests.m */,
-				CEE077BA17C5BEB70012C196 /* Supporting Files */,
-			);
-			path = CWPopupDemoTests;
-			sourceTree = "<group>";
-		};
-		CEE077BA17C5BEB70012C196 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CEE077BB17C5BEB70012C196 /* CWPopupDemoTests-Info.plist */,
-				CEE077BC17C5BEB70012C196 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -296,7 +272,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEE077BE17C5BEB70012C196 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +295,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEE077C017C5BEB70012C196 /* CWPopupDemoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,14 +313,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				CEE077A017C5BEB70012C196 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		CEE077BC17C5BEB70012C196 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CEE077BD17C5BEB70012C196 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

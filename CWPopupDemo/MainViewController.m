@@ -50,9 +50,11 @@
 }
 
 - (void)dismissPopup {
-    [self dismissPopupViewControllerAnimated:YES completion:^{
-        NSLog(@"popup view dismissed");
-    }];
+    if (self.popupViewController != nil) {
+        [self dismissPopupViewControllerAnimated:YES completion:^{
+            NSLog(@"popup view dismissed");
+        }];
+    }
 }
 
 @end
