@@ -22,6 +22,11 @@
 		CEE077B617C5BEB70012C196 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779A17C5BEB70012C196 /* CoreData.framework */; };
 		CEE077BE17C5BEB70012C196 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEE077BC17C5BEB70012C196 /* InfoPlist.strings */; };
 		CEE077C017C5BEB70012C196 /* CWPopupDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE077BF17C5BEB70012C196 /* CWPopupDemoTests.m */; };
+		CEE077CE17C5BEDA0012C196 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE077CC17C5BEDA0012C196 /* MainViewController.m */; };
+		CEE077CF17C5BEDA0012C196 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE077CD17C5BEDA0012C196 /* MainViewController.xib */; };
+		CEE077D317C5BF580012C196 /* UIViewController+CWPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE077D217C5BF580012C196 /* UIViewController+CWPopup.m */; };
+		CEE077D917C5BFF30012C196 /* SamplePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE077D717C5BFF30012C196 /* SamplePopupViewController.m */; };
+		CEE077DA17C5BFF30012C196 /* SamplePopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE077D817C5BFF30012C196 /* SamplePopupViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,14 @@
 		CEE077BB17C5BEB70012C196 /* CWPopupDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CWPopupDemoTests-Info.plist"; sourceTree = "<group>"; };
 		CEE077BD17C5BEB70012C196 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CEE077BF17C5BEB70012C196 /* CWPopupDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWPopupDemoTests.m; sourceTree = "<group>"; };
+		CEE077CB17C5BEDA0012C196 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		CEE077CC17C5BEDA0012C196 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		CEE077CD17C5BEDA0012C196 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		CEE077D117C5BF580012C196 /* UIViewController+CWPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CWPopup.h"; sourceTree = "<group>"; };
+		CEE077D217C5BF580012C196 /* UIViewController+CWPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CWPopup.m"; sourceTree = "<group>"; };
+		CEE077D617C5BFF30012C196 /* SamplePopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplePopupViewController.h; sourceTree = "<group>"; };
+		CEE077D717C5BFF30012C196 /* SamplePopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplePopupViewController.m; sourceTree = "<group>"; };
+		CEE077D817C5BFF30012C196 /* SamplePopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplePopupViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +128,8 @@
 		CEE0779C17C5BEB70012C196 /* CWPopupDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CEE077C917C5BEBD0012C196 /* Categories */,
+				CEE077CA17C5BEC80012C196 /* View Controllers */,
 				CEE077A517C5BEB70012C196 /* CWAppDelegate.h */,
 				CEE077A617C5BEB70012C196 /* CWAppDelegate.m */,
 				CEE077AB17C5BEB70012C196 /* Images.xcassets */,
@@ -151,6 +166,44 @@
 				CEE077BC17C5BEB70012C196 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CEE077C917C5BEBD0012C196 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CEE077D117C5BF580012C196 /* UIViewController+CWPopup.h */,
+				CEE077D217C5BF580012C196 /* UIViewController+CWPopup.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		CEE077CA17C5BEC80012C196 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEE077D417C5BFC20012C196 /* MainViewController */,
+				CEE077D517C5BFCE0012C196 /* SamplePopupViewController */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		CEE077D417C5BFC20012C196 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEE077CB17C5BEDA0012C196 /* MainViewController.h */,
+				CEE077CC17C5BEDA0012C196 /* MainViewController.m */,
+				CEE077CD17C5BEDA0012C196 /* MainViewController.xib */,
+			);
+			name = MainViewController;
+			sourceTree = "<group>";
+		};
+		CEE077D517C5BFCE0012C196 /* SamplePopupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEE077D617C5BFF30012C196 /* SamplePopupViewController.h */,
+				CEE077D717C5BFF30012C196 /* SamplePopupViewController.m */,
+				CEE077D817C5BFF30012C196 /* SamplePopupViewController.xib */,
+			);
+			name = SamplePopupViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +254,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Cezary Wojcik";
 				TargetAttributes = {
+					CEE0779017C5BEB70012C196 = {
+						DevelopmentTeam = QMZH6X9D3C;
+					};
 					CEE077B017C5BEB70012C196 = {
 						TestTargetID = CEE0779017C5BEB70012C196;
 					};
@@ -230,7 +286,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEE077A117C5BEB70012C196 /* InfoPlist.strings in Resources */,
+				CEE077CF17C5BEDA0012C196 /* MainViewController.xib in Resources */,
 				CEE077AC17C5BEB70012C196 /* Images.xcassets in Resources */,
+				CEE077DA17C5BFF30012C196 /* SamplePopupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +310,9 @@
 				CEE077A717C5BEB70012C196 /* CWAppDelegate.m in Sources */,
 				CEE077A317C5BEB70012C196 /* main.m in Sources */,
 				CEE077AA17C5BEB70012C196 /* CWPopupDemo.xcdatamodeld in Sources */,
+				CEE077D917C5BFF30012C196 /* SamplePopupViewController.m in Sources */,
+				CEE077CE17C5BEDA0012C196 /* MainViewController.m in Sources */,
+				CEE077D317C5BF580012C196 /* UIViewController+CWPopup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +429,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CWPopupDemo/CWPopupDemo-Prefix.pch";
 				INFOPLIST_FILE = "CWPopupDemo/CWPopupDemo-Info.plist";
@@ -381,6 +443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CWPopupDemo/CWPopupDemo-Prefix.pch";
 				INFOPLIST_FILE = "CWPopupDemo/CWPopupDemo-Info.plist";
