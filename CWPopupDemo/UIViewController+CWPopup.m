@@ -56,7 +56,6 @@ NSString const *CWFadeViewKey = @"CWFadeViewKey";
         }];
     } else { // don't animate
         viewControllerToPresent.view.frame = finalFrame;
-        fadeView.alpha = FADE_ALPHA;
         [self.view addSubview:viewControllerToPresent.view];
         [completion invoke];
     }

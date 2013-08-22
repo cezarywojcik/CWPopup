@@ -22,6 +22,8 @@ To dismiss a view controller:
 
 That's all there is to it.
 
+**Note:** The background is not faded out if `animated` is set to `NO` - that way, if you want to implement your own animation and fading, you can.
+
 ## License
 
     The MIT License (MIT)
