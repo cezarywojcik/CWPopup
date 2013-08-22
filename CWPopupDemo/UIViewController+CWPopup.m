@@ -21,6 +21,7 @@ NSString const *CWPopupKey = @"CWPopupkey";
 #pragma mark - present/dismiss
 
 - (void)presentPopupViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
+    // setup
     self.popupViewController = viewControllerToPresent;
     CGRect frame = viewControllerToPresent.view.frame;
     CGFloat x = ([UIScreen mainScreen].bounds.size.width - viewControllerToPresent.view.frame.size.width)/2;
@@ -32,7 +33,7 @@ NSString const *CWPopupKey = @"CWPopupkey";
     viewControllerToPresent.view.layer.shadowRadius = 4.0f;
     viewControllerToPresent.view.layer.shadowOpacity = 0.8f;
     viewControllerToPresent.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:viewControllerToPresent.view.layer.bounds].CGPath;
-    if (flag) {
+    if (flag) { // animate
         CGRect initialFrame = CGRectMake(finalFrame.origin.x, [UIScreen mainScreen].bounds.size.height + 10, finalFrame.size.width, finalFrame.size.height);
         viewControllerToPresent.view.frame = initialFrame;
         [self.view addSubview:viewControllerToPresent.view];
@@ -41,7 +42,7 @@ NSString const *CWPopupKey = @"CWPopupkey";
         } completion:^(BOOL finished) {
             [completion invoke];
         }];
-    } else {
+    } else { // don't animate
         viewControllerToPresent.view.frame = finalFrame;
         [self.view addSubview:viewControllerToPresent.view];
         [completion invoke];
@@ -49,7 +50,7 @@ NSString const *CWPopupKey = @"CWPopupkey";
 }
 
 - (void)dismissPopupViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
-    if (flag) {
+    if (flag) { // animate
         CGRect initialFrame = self.popupViewController.view.frame;
         [UIView animateWithDuration:ANIMATION_TIME delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.popupViewController.view.frame = CGRectMake(initialFrame.origin.x, [UIScreen mainScreen].bounds.size.height, initialFrame.size.width, initialFrame.size.height);
@@ -58,7 +59,7 @@ NSString const *CWPopupKey = @"CWPopupkey";
             self.popupViewController = nil;
             [completion invoke];
         }];
-    } else {
+    } else { // don't animate
         [self.popupViewController.view removeFromSuperview];
         self.popupViewController = nil;
         [completion invoke];

@@ -31,6 +31,7 @@
     // Do any additional setup after loading the view from its nib.
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissPopup)];
     tapRecognizer.numberOfTapsRequired = 1;
+    tapRecognizer.delegate = self;
     [self.view addGestureRecognizer:tapRecognizer];
 }
 
@@ -55,6 +56,13 @@
             NSLog(@"popup view dismissed");
         }];
     }
+}
+
+#pragma mark - gesture recognizer delegate functions
+
+// so that tapping popup view doesnt dismiss it
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return touch.view == self.view;
 }
 
 @end
