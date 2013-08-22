@@ -29,6 +29,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissPopup)];
+    tapRecognizer.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tapRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,12 +40,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - IBActions
+#pragma mark - Popup Functions
 
 - (IBAction)btnPresentPopup:(UIButton *)sender {
     SamplePopupViewController *samplePopupViewController = [[SamplePopupViewController alloc] initWithNibName:@"SamplePopupViewController" bundle:nil];
-    [self presentPopupViewController:samplePopupViewController animated:YES completion:^{
-        NSLog(@"popup view presented!");
+    [self presentPopupViewController:samplePopupViewController animated:YES completion:^(void) {
+        NSLog(@"popup view presented");
+    }];
+}
+
+- (void)dismissPopup {
+    [self dismissPopupViewControllerAnimated:YES completion:^{
+        NSLog(@"popup view dismissed");
     }];
 }
 

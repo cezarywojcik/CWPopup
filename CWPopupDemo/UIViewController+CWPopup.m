@@ -7,13 +7,19 @@
 //
 
 #import "UIViewController+CWPopup.h"
+#import <objc/runtime.h>
 #import <QuartzCore/QuartzCore.h>
 
 #define ANIMATION_TIME 0.5
 
+NSString const *CWPopupKey = @"CWPopupkey";
+
 @implementation UIViewController (CWPopup)
 
+@dynamic popupViewController;
+
 - (void)presentPopupViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
+    self.popupViewController = viewControllerToPresent;
     CGRect frame = viewControllerToPresent.view.frame;
     CGFloat x = ([UIScreen mainScreen].bounds.size.width - viewControllerToPresent.view.frame.size.width)/2;
     CGFloat y =([UIScreen mainScreen].bounds.size.height - viewControllerToPresent.view.frame.size.height)/2;
@@ -31,12 +37,28 @@
         [UIView animateWithDuration:ANIMATION_TIME delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             viewControllerToPresent.view.frame = finalFrame;
         } completion:^(BOOL finished) {
-            // code;
+            [completion invoke];
         }];
     } else {
         viewControllerToPresent.view.frame = finalFrame;
         [self.view addSubview:viewControllerToPresent.view];
+        [completion invoke];
     }
+}
+
+- (void)dismissPopupViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
+    [self.popupViewController.view removeFromSuperview];
+    self.popupViewController = nil;
+}
+
+#pragma mark - popupViewController getter/setter
+
+- (void)setPopupViewController:(UIViewController *)popupViewController {
+    objc_setAssociatedObject(self, &CWPopupKey, popupViewController, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIViewController *)popupViewController {
+    return objc_getAssociatedObject(self, &CWPopupKey);
 }
 
 @end

@@ -10,6 +10,9 @@
 
 @interface UIViewController (CWPopup)
 
+@property (nonatomic, readwrite) UIViewController *popupViewController;
+
 - (void)presentPopupViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion;
+- (void)dismissPopupViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion;
 
 @end
