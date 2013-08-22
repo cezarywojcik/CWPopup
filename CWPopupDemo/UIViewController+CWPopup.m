@@ -18,6 +18,8 @@ NSString const *CWPopupKey = @"CWPopupkey";
 
 @dynamic popupViewController;
 
+#pragma mark - present/dismiss
+
 - (void)presentPopupViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
     self.popupViewController = viewControllerToPresent;
     CGRect frame = viewControllerToPresent.view.frame;
@@ -47,8 +49,20 @@ NSString const *CWPopupKey = @"CWPopupkey";
 }
 
 - (void)dismissPopupViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
-    [self.popupViewController.view removeFromSuperview];
-    self.popupViewController = nil;
+    if (flag) {
+        CGRect initialFrame = self.popupViewController.view.frame;
+        [UIView animateWithDuration:ANIMATION_TIME delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.popupViewController.view.frame = CGRectMake(initialFrame.origin.x, [UIScreen mainScreen].bounds.size.height, initialFrame.size.width, initialFrame.size.height);
+        } completion:^(BOOL finished) {
+            [self.popupViewController.view removeFromSuperview];
+            self.popupViewController = nil;
+            [completion invoke];
+        }];
+    } else {
+        [self.popupViewController.view removeFromSuperview];
+        self.popupViewController = nil;
+        [completion invoke];
+    }
 }
 
 #pragma mark - popupViewController getter/setter
