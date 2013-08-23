@@ -45,7 +45,7 @@ NSString const *CWFadeViewKey = @"CWFadeViewKey";
     [self.view addSubview:fadeView];
     objc_setAssociatedObject(self, &CWFadeViewKey, fadeView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if (flag) { // animate
-        CGRect initialFrame = CGRectMake(finalFrame.origin.x, [UIScreen mainScreen].bounds.size.height + 10, finalFrame.size.width, finalFrame.size.height);
+        CGRect initialFrame = CGRectMake(finalFrame.origin.x, [UIScreen mainScreen].bounds.size.height + viewControllerToPresent.view.frame.size.height/2, finalFrame.size.width, finalFrame.size.height);
         viewControllerToPresent.view.frame = initialFrame;
         [self.view addSubview:viewControllerToPresent.view];
         [UIView animateWithDuration:ANIMATION_TIME delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -66,7 +66,9 @@ NSString const *CWFadeViewKey = @"CWFadeViewKey";
     if (flag) { // animate
         CGRect initialFrame = self.popupViewController.view.frame;
         [UIView animateWithDuration:ANIMATION_TIME delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.popupViewController.view.frame = CGRectMake(initialFrame.origin.x, [UIScreen mainScreen].bounds.size.height, initialFrame.size.width, initialFrame.size.height);
+            self.popupViewController.view.frame = CGRectMake(initialFrame.origin.x, [UIScreen mainScreen].bounds.size.height + initialFrame.size.height/2, initialFrame.size.width, initialFrame.size.height);
+            // uncomment the line below to have slight rotation during the dismissal
+            // self.popupViewController.view.transform = CGAffineTransformMakeRotation(M_PI/6);
             fadeView.alpha = 0.0f;
         } completion:^(BOOL finished) {
             [self.popupViewController.view removeFromSuperview];
@@ -77,7 +79,7 @@ NSString const *CWFadeViewKey = @"CWFadeViewKey";
     } else { // don't animate
         [self.popupViewController.view removeFromSuperview];
         [fadeView removeFromSuperview];
-        self.popupViewController = nil;
+        self.popupViewController = nil; 
         fadeView = nil;
 
         [completion invoke];

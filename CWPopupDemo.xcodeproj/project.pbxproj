@@ -399,6 +399,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CWPopupDemo/CWPopupDemo-Prefix.pch";
 				INFOPLIST_FILE = "CWPopupDemo/CWPopupDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -413,6 +414,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CWPopupDemo/CWPopupDemo-Prefix.pch";
 				INFOPLIST_FILE = "CWPopupDemo/CWPopupDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -477,6 +479,7 @@
 				CEE077C517C5BEB80012C196 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CEE077C617C5BEB80012C196 /* Build configuration list for PBXNativeTarget "CWPopupDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -485,6 +488,7 @@
 				CEE077C817C5BEB80012C196 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
