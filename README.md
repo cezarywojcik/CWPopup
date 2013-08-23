@@ -2,7 +2,8 @@
 
 CWPopup is a category on UIViewController that allows you to easily make popup view controllers.
 
-![CWPopup](popup.gif)]
+![CWPopup](popup.gif)
+
 ## Installation
 
 ### [CocoaPods](http://www.cocoapods.org)
