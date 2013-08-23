@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE2FCB9D17C72D1400359C70 /* UIViewController+CWPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2FCB9C17C72D1400359C70 /* UIViewController+CWPopup.m */; };
 		CEE0779517C5BEB70012C196 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779417C5BEB70012C196 /* Foundation.framework */; };
 		CEE0779717C5BEB70012C196 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779617C5BEB70012C196 /* CoreGraphics.framework */; };
 		CEE0779917C5BEB70012C196 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779817C5BEB70012C196 /* UIKit.framework */; };
@@ -24,7 +25,6 @@
 		CEE077CF17C5BEDA0012C196 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE077CD17C5BEDA0012C196 /* MainViewController.xib */; };
 		CEE077D917C5BFF30012C196 /* SamplePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE077D717C5BFF30012C196 /* SamplePopupViewController.m */; };
 		CEE077DA17C5BFF30012C196 /* SamplePopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE077D817C5BFF30012C196 /* SamplePopupViewController.xib */; };
-		CEE077DD17C685DA0012C196 /* UIViewController+CWPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE077DC17C685DA0012C196 /* UIViewController+CWPopup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE2FCB9B17C72D1400359C70 /* UIViewController+CWPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CWPopup.h"; sourceTree = "<group>"; };
+		CE2FCB9C17C72D1400359C70 /* UIViewController+CWPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CWPopup.m"; sourceTree = "<group>"; };
 		CEE0779117C5BEB70012C196 /* CWPopupDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWPopupDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE0779417C5BEB70012C196 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CEE0779617C5BEB70012C196 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -59,8 +61,6 @@
 		CEE077D617C5BFF30012C196 /* SamplePopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplePopupViewController.h; sourceTree = "<group>"; };
 		CEE077D717C5BFF30012C196 /* SamplePopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplePopupViewController.m; sourceTree = "<group>"; };
 		CEE077D817C5BFF30012C196 /* SamplePopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplePopupViewController.xib; sourceTree = "<group>"; };
-		CEE077DB17C685DA0012C196 /* UIViewController+CWPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+CWPopup.h"; path = "CWPopup/UIViewController+CWPopup.h"; sourceTree = "<group>"; };
-		CEE077DC17C685DA0012C196 /* UIViewController+CWPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+CWPopup.m"; path = "CWPopup/UIViewController+CWPopup.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +89,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE2FCB9A17C72D1400359C70 /* CWPopup */ = {
+			isa = PBXGroup;
+			children = (
+				CE2FCB9B17C72D1400359C70 /* UIViewController+CWPopup.h */,
+				CE2FCB9C17C72D1400359C70 /* UIViewController+CWPopup.m */,
+			);
+			path = CWPopup;
+			sourceTree = "<group>";
+		};
 		CEE0778817C5BEB70012C196 = {
 			isa = PBXGroup;
 			children = (
+				CE2FCB9A17C72D1400359C70 /* CWPopup */,
 				CEE0779C17C5BEB70012C196 /* CWPopupDemo */,
 				CEE0779317C5BEB70012C196 /* Frameworks */,
 				CEE0779217C5BEB70012C196 /* Products */,
@@ -122,7 +132,6 @@
 		CEE0779C17C5BEB70012C196 /* CWPopupDemo */ = {
 			isa = PBXGroup;
 			children = (
-				CEE077C917C5BEBD0012C196 /* Categories */,
 				CEE077CA17C5BEC80012C196 /* View Controllers */,
 				CEE077A517C5BEB70012C196 /* CWAppDelegate.h */,
 				CEE077A617C5BEB70012C196 /* CWAppDelegate.m */,
@@ -142,15 +151,6 @@
 				CEE077A417C5BEB70012C196 /* CWPopupDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CEE077C917C5BEBD0012C196 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				CEE077DB17C685DA0012C196 /* UIViewController+CWPopup.h */,
-				CEE077DC17C685DA0012C196 /* UIViewController+CWPopup.m */,
-			);
-			name = Categories;
 			sourceTree = "<group>";
 		};
 		CEE077CA17C5BEC80012C196 /* View Controllers */ = {
@@ -285,7 +285,7 @@
 				CEE077A717C5BEB70012C196 /* CWAppDelegate.m in Sources */,
 				CEE077A317C5BEB70012C196 /* main.m in Sources */,
 				CEE077AA17C5BEB70012C196 /* CWPopupDemo.xcdatamodeld in Sources */,
-				CEE077DD17C685DA0012C196 /* UIViewController+CWPopup.m in Sources */,
+				CE2FCB9D17C72D1400359C70 /* UIViewController+CWPopup.m in Sources */,
 				CEE077D917C5BFF30012C196 /* SamplePopupViewController.m in Sources */,
 				CEE077CE17C5BEDA0012C196 /* MainViewController.m in Sources */,
 			);
