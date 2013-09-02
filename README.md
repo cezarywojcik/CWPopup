@@ -8,7 +8,7 @@ CWPopup is a category on UIViewController that allows you to easily make popup v
 
 ### [CocoaPods](http://www.cocoapods.org)
 
-`pod 'CWPopup'`
+`pod 'CWPopup', '~> 1.1.0'`
 
 ### Manual
 
