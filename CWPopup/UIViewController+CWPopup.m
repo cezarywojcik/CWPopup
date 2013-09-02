@@ -29,6 +29,17 @@ NSString const *CWFadeViewKey = @"CWFadeViewKey";
     CGFloat x = ([UIScreen mainScreen].bounds.size.width - viewControllerToPresent.view.frame.size.width)/2;
     CGFloat y =([UIScreen mainScreen].bounds.size.height - viewControllerToPresent.view.frame.size.height)/2;
     CGRect finalFrame = CGRectMake(x, y, frame.size.width, frame.size.height);
+    // parallax setup
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        UIInterpolatingMotionEffect *interpolationHorizontal = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+        interpolationHorizontal.minimumRelativeValue = @-10.0;
+        interpolationHorizontal.maximumRelativeValue = @10.0;
+        UIInterpolatingMotionEffect *interpolationVertical = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+        interpolationHorizontal.minimumRelativeValue = @-10.0;
+        interpolationHorizontal.maximumRelativeValue = @10.0;
+        [self.popupViewController.view addMotionEffect:interpolationHorizontal];
+        [self.popupViewController.view addMotionEffect:interpolationVertical];
+    }
     // shadow setup
     viewControllerToPresent.view.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     viewControllerToPresent.view.layer.shadowColor = [UIColor blackColor].CGColor;
