@@ -27,6 +27,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    // use toolbar as background because its pretty in iOS7
+    UIToolbar *toolbarBackground = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 44, 200, 106)];
+    [self.view addSubview:toolbarBackground];
+    [self.view sendSubviewToBack:toolbarBackground];
+    // set size
 }
 
 - (void)didReceiveMemoryWarning

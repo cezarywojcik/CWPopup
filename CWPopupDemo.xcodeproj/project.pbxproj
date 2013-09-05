@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE2FCB9D17C72D1400359C70 /* UIViewController+CWPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2FCB9C17C72D1400359C70 /* UIViewController+CWPopup.m */; };
+		CE9AAD5417D8273100AFC34D /* mavericks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE9AAD5317D8273000AFC34D /* mavericks.jpg */; };
 		CEE0779517C5BEB70012C196 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779417C5BEB70012C196 /* Foundation.framework */; };
 		CEE0779717C5BEB70012C196 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779617C5BEB70012C196 /* CoreGraphics.framework */; };
 		CEE0779917C5BEB70012C196 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779817C5BEB70012C196 /* UIKit.framework */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		CE2FCB9B17C72D1400359C70 /* UIViewController+CWPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CWPopup.h"; sourceTree = "<group>"; };
 		CE2FCB9C17C72D1400359C70 /* UIViewController+CWPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CWPopup.m"; sourceTree = "<group>"; };
+		CE9AAD5317D8273000AFC34D /* mavericks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mavericks.jpg; sourceTree = "<group>"; };
 		CEE0779117C5BEB70012C196 /* CWPopupDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWPopupDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE0779417C5BEB70012C196 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CEE0779617C5BEB70012C196 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -98,9 +100,18 @@
 			path = CWPopup;
 			sourceTree = "<group>";
 		};
+		CE9AAD5217D8272000AFC34D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CE9AAD5317D8273000AFC34D /* mavericks.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		CEE0778817C5BEB70012C196 = {
 			isa = PBXGroup;
 			children = (
+				CE9AAD5217D8272000AFC34D /* Images */,
 				CE2FCB9A17C72D1400359C70 /* CWPopup */,
 				CEE0779C17C5BEB70012C196 /* CWPopupDemo */,
 				CEE0779317C5BEB70012C196 /* Frameworks */,
@@ -264,6 +275,7 @@
 				CEE077A117C5BEB70012C196 /* InfoPlist.strings in Resources */,
 				CEE077CF17C5BEDA0012C196 /* MainViewController.xib in Resources */,
 				CEE077AC17C5BEB70012C196 /* Images.xcassets in Resources */,
+				CE9AAD5417D8273100AFC34D /* mavericks.jpg in Resources */,
 				CEE077DA17C5BFF30012C196 /* SamplePopupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
