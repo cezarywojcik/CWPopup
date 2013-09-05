@@ -33,6 +33,7 @@
     tapRecognizer.numberOfTapsRequired = 1;
     tapRecognizer.delegate = self;
     [self.view addGestureRecognizer:tapRecognizer];
+    self.useBlurForPopup = YES;
 }
 
 - (void)didReceiveMemoryWarning

@@ -43,15 +43,15 @@
 @end
 
 #define ANIMATION_TIME 0.5f
-#define FADE_ALPHA 1.0f
 #define STATUS_BAR_SIZE 22
 
 NSString const *CWPopupKey = @"CWPopupkey";
 NSString const *CWBlurViewKey = @"CWFadeViewKey";
+NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
 
 @implementation UIViewController (CWPopup)
 
-@dynamic popupViewController;
+@dynamic popupViewController, useBlurForPopup;
 
 #pragma mark - blur view methods
 
@@ -124,7 +124,16 @@ NSString const *CWBlurViewKey = @"CWFadeViewKey";
     // rounded corners
     viewControllerToPresent.view.layer.cornerRadius = 5.0f;
     // blurview
-    [self addBlurView];
+    if (self.useBlurForPopup) {
+        [self addBlurView];
+    } else {
+        UIView *fadeView = [UIView new];
+        fadeView.frame = [UIScreen mainScreen].bounds;
+        fadeView.backgroundColor = [UIColor blackColor];
+        fadeView.alpha = 0.0f;
+        [self.view addSubview:fadeView];
+        objc_setAssociatedObject(self, &CWBlurViewKey, fadeView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
     UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
     // setup
     if (flag) { // animate
@@ -133,7 +142,7 @@ NSString const *CWBlurViewKey = @"CWFadeViewKey";
         [self.view addSubview:viewControllerToPresent.view];
         [UIView animateWithDuration:ANIMATION_TIME delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             viewControllerToPresent.view.frame = finalFrame;
-            blurView.alpha = FADE_ALPHA;
+            blurView.alpha = self.useBlurForPopup ? 1.0f : 0.4f;
         } completion:^(BOOL finished) {
             [completion invoke];
         }];
@@ -194,23 +203,25 @@ NSString const *CWBlurViewKey = @"CWFadeViewKey";
     UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
     [UIView animateWithDuration:ANIMATION_TIME animations:^{
         self.popupViewController.view.frame = [self getPopupFrameForViewController:self.popupViewController];
-        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)) {
-            blurView.frame = [UIScreen mainScreen].bounds;
-        } else {
-            blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+        if (self.useBlurForPopup) {
+            if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)) {
+                blurView.frame = [UIScreen mainScreen].bounds;
+            } else {
+                blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+            }
+            [UIView animateWithDuration:1.0f animations:^{
+                // for delay
+            } completion:^(BOOL finished) {
+                [blurView removeFromSuperview];
+                // popup view alpha to 0 so its not in the blur image
+                self.popupViewController.view.alpha = 0.0f;
+                [self addBlurView];
+                self.popupViewController.view.alpha = 1.0f;
+                // display blurView again
+                UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
+                blurView.alpha = 1.0f;
+            }];
         }
-        [UIView animateWithDuration:1.0f animations:^{
-            // for delay
-        } completion:^(BOOL finished) {
-            [blurView removeFromSuperview];
-            // popup view alpha to 0 so its not in the blur image
-            self.popupViewController.view.alpha = 0.0f;
-            [self addBlurView];
-            self.popupViewController.view.alpha = 1.0f;
-            // display blurView again
-            UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
-            blurView.alpha = 1.0f;
-        }];
     }];
 }
 
@@ -222,6 +233,17 @@ NSString const *CWBlurViewKey = @"CWFadeViewKey";
 
 - (UIViewController *)popupViewController {
     return objc_getAssociatedObject(self, &CWPopupKey);
+
+}
+
+- (void)setUseBlurForPopup:(BOOL)useBlurForPopup {
+    objc_setAssociatedObject(self, &CWUseBlurForPopup, [NSNumber numberWithBool:useBlurForPopup], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)useBlurForPopup {
+    NSNumber *result = objc_getAssociatedObject(self, &CWUseBlurForPopup);
+    return [result boolValue];
+
 }
 
 @end
