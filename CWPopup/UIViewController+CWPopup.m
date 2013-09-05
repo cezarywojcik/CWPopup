@@ -128,7 +128,11 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
         [self addBlurView];
     } else {
         UIView *fadeView = [UIView new];
-        fadeView.frame = [UIScreen mainScreen].bounds;
+        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)) {
+            fadeView.frame = [UIScreen mainScreen].bounds;
+        } else {
+            fadeView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+        }
         fadeView.backgroundColor = [UIColor blackColor];
         fadeView.alpha = 0.0f;
         [self.view addSubview:fadeView];
@@ -203,12 +207,12 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
     UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
     [UIView animateWithDuration:ANIMATION_TIME animations:^{
         self.popupViewController.view.frame = [self getPopupFrameForViewController:self.popupViewController];
+        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)) {
+            blurView.frame = [UIScreen mainScreen].bounds;
+        } else {
+            blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+        }
         if (self.useBlurForPopup) {
-            if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)) {
-                blurView.frame = [UIScreen mainScreen].bounds;
-            } else {
-                blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
-            }
             [UIView animateWithDuration:1.0f animations:^{
                 // for delay
             } completion:^(BOOL finished) {

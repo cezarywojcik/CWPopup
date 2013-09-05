@@ -24,6 +24,10 @@ First of all, import the category.
 
     #import "UIViewController+CWPopup.h"
 
+You can choose to use either a fade background or a blurred background. The fade background will partially fade out the background, whereas the blurred background will apply a blur to the background. **Note:** No background animations will show if you use the blurred background as it is a static image placed on top of the view. The default setting is to use the fade background. To enable the blurred background, in your `viewDidLoad` function, add the following line of code:
+    
+    self.useBlurForPopup = YES;
+
 To present a view controller:
 
     SamplePopupViewController *samplePopupViewController = [[SamplePopupViewController alloc] initWithNibName:@"SamplePopupViewController" bundle:nil];
