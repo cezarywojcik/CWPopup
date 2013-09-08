@@ -58,7 +58,7 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
 - (UIImage *)getScreenImage {
     // frame without status bar
     CGRect frame;
-    if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)) {
+    if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
         frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     } else {
         frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
@@ -84,7 +84,7 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
 
 - (void)addBlurView {
     UIImageView *blurView = [UIImageView new];
-    if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)) {
+    if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
         blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     } else {
         blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
@@ -99,64 +99,66 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
 #pragma mark - present/dismiss
 
 - (void)presentPopupViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
-    // initial setup
-    self.popupViewController = viewControllerToPresent;
-    self.popupViewController.view.autoresizesSubviews = NO;
-    self.popupViewController.view.autoresizingMask = UIViewAutoresizingNone;
-    CGRect finalFrame = [self getPopupFrameForViewController:viewControllerToPresent];
-    // parallax setup if iOS7+
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        UIInterpolatingMotionEffect *interpolationHorizontal = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-        interpolationHorizontal.minimumRelativeValue = @-10.0;
-        interpolationHorizontal.maximumRelativeValue = @10.0;
-        UIInterpolatingMotionEffect *interpolationVertical = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-        interpolationHorizontal.minimumRelativeValue = @-10.0;
-        interpolationHorizontal.maximumRelativeValue = @10.0;
-        [self.popupViewController.view addMotionEffect:interpolationHorizontal];
-        [self.popupViewController.view addMotionEffect:interpolationVertical];
-    }
-    // shadow setup
-    viewControllerToPresent.view.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-    viewControllerToPresent.view.layer.shadowColor = [UIColor blackColor].CGColor;
-    viewControllerToPresent.view.layer.shadowRadius = 3.0f;
-    viewControllerToPresent.view.layer.shadowOpacity = 0.8f;
-    viewControllerToPresent.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:viewControllerToPresent.view.layer.bounds].CGPath;
-    // rounded corners
-    viewControllerToPresent.view.layer.cornerRadius = 5.0f;
-    // blurview
-    if (self.useBlurForPopup) {
-        [self addBlurView];
-    } else {
-        UIView *fadeView = [UIView new];
-        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)) {
-            fadeView.frame = [UIScreen mainScreen].bounds;
-        } else {
-            fadeView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+    if (self.popupViewController == nil) {
+        // initial setup
+        self.popupViewController = viewControllerToPresent;
+        self.popupViewController.view.autoresizesSubviews = NO;
+        self.popupViewController.view.autoresizingMask = UIViewAutoresizingNone;
+        CGRect finalFrame = [self getPopupFrameForViewController:viewControllerToPresent];
+        // parallax setup if iOS7+
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+            UIInterpolatingMotionEffect *interpolationHorizontal = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+            interpolationHorizontal.minimumRelativeValue = @-10.0;
+            interpolationHorizontal.maximumRelativeValue = @10.0;
+            UIInterpolatingMotionEffect *interpolationVertical = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+            interpolationHorizontal.minimumRelativeValue = @-10.0;
+            interpolationHorizontal.maximumRelativeValue = @10.0;
+            [self.popupViewController.view addMotionEffect:interpolationHorizontal];
+            [self.popupViewController.view addMotionEffect:interpolationVertical];
         }
-        fadeView.backgroundColor = [UIColor blackColor];
-        fadeView.alpha = 0.0f;
-        [self.view addSubview:fadeView];
-        objc_setAssociatedObject(self, &CWBlurViewKey, fadeView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    }
-    UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
-    // setup
-    if (flag) { // animate
-        CGRect initialFrame = CGRectMake(finalFrame.origin.x, [UIScreen mainScreen].bounds.size.height + viewControllerToPresent.view.frame.size.height/2, finalFrame.size.width, finalFrame.size.height);
-        viewControllerToPresent.view.frame = initialFrame;
-        [self.view addSubview:viewControllerToPresent.view];
-        [UIView animateWithDuration:ANIMATION_TIME delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        // shadow setup
+        viewControllerToPresent.view.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+        viewControllerToPresent.view.layer.shadowColor = [UIColor blackColor].CGColor;
+        viewControllerToPresent.view.layer.shadowRadius = 3.0f;
+        viewControllerToPresent.view.layer.shadowOpacity = 0.8f;
+        viewControllerToPresent.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:viewControllerToPresent.view.layer.bounds].CGPath;
+        // rounded corners
+        viewControllerToPresent.view.layer.cornerRadius = 5.0f;
+        // blurview
+        if (self.useBlurForPopup) {
+            [self addBlurView];
+        } else {
+            UIView *fadeView = [UIView new];
+            if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+                fadeView.frame = [UIScreen mainScreen].bounds;
+            } else {
+                fadeView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+            }
+            fadeView.backgroundColor = [UIColor blackColor];
+            fadeView.alpha = 0.0f;
+            [self.view addSubview:fadeView];
+            objc_setAssociatedObject(self, &CWBlurViewKey, fadeView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+        UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
+        // setup
+        if (flag) { // animate
+            CGRect initialFrame = CGRectMake(finalFrame.origin.x, [UIScreen mainScreen].bounds.size.height + viewControllerToPresent.view.frame.size.height/2, finalFrame.size.width, finalFrame.size.height);
+            viewControllerToPresent.view.frame = initialFrame;
+            [self.view addSubview:viewControllerToPresent.view];
+            [UIView animateWithDuration:ANIMATION_TIME delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                viewControllerToPresent.view.frame = finalFrame;
+                blurView.alpha = self.useBlurForPopup ? 1.0f : 0.4f;
+            } completion:^(BOOL finished) {
+                [completion invoke];
+            }];
+        } else { // don't animate
             viewControllerToPresent.view.frame = finalFrame;
-            blurView.alpha = self.useBlurForPopup ? 1.0f : 0.4f;
-        } completion:^(BOOL finished) {
+            [self.view addSubview:viewControllerToPresent.view];
             [completion invoke];
-        }];
-    } else { // don't animate
-        viewControllerToPresent.view.frame = finalFrame;
-        [self.view addSubview:viewControllerToPresent.view];
-        [completion invoke];
+        }
+        // if screen orientation changed
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(screenOrientationChanged) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
     }
-    // if screen orientation changed
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(screenOrientationChanged) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
 }
 
 - (void)dismissPopupViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
@@ -192,7 +194,7 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
     CGRect frame = viewController.view.frame;
     CGFloat x;
     CGFloat y;
-    if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)) {
+    if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
         x = ([UIScreen mainScreen].bounds.size.width - frame.size.width)/2;
         y = ([UIScreen mainScreen].bounds.size.height - frame.size.height)/2;
     } else {
@@ -207,7 +209,7 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
     UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
     [UIView animateWithDuration:ANIMATION_TIME animations:^{
         self.popupViewController.view.frame = [self getPopupFrameForViewController:self.popupViewController];
-        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)) {
+        if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
             blurView.frame = [UIScreen mainScreen].bounds;
         } else {
             blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
