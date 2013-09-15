@@ -2,7 +2,13 @@
 
 CWPopup is a category on UIViewController that allows you to easily make popup view controllers.
 
-![CWPopup](popup.gif)
+## Fade
+
+![Fade View](popup.gif)
+
+## Blur
+
+![Blur View](popupblur.gif)
 
 ## Installation
 
