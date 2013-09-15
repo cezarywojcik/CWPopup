@@ -8,7 +8,7 @@ CWPopup is a category on UIViewController that allows you to easily make popup v
 
 ### [CocoaPods](http://www.cocoapods.org)
 
-`pod 'CWPopup', '~> 1.1.0'`
+`pod 'CWPopup', '~> 1.1.1'`
 
 ### Manual
 
@@ -25,7 +25,7 @@ First of all, import the category.
     #import "UIViewController+CWPopup.h"
 
 You can choose to use either a fade background or a blurred background. The fade background will partially fade out the background, whereas the blurred background will apply a blur to the background. **Note:** No background animations will show if you use the blurred background as it is a static image placed on top of the view. The default setting is to use the fade background. To enable the blurred background, in your `viewDidLoad` function, add the following line of code:
-    
+
     self.useBlurForPopup = YES;
 
 To present a view controller:
@@ -46,19 +46,19 @@ That's all there is to it.
 ## License
 
     The MIT License (MIT)
-    
+
     Copyright (c) 2013 Cezary Wojcik <http://www.cezarywojcik.com>
-    
+
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
     in the Software without restriction, including without limitation the rights
     to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
     copies of the Software, and to permit persons to whom the Software is
     furnished to do so, subject to the following conditions:
-    
+
     The above copyright notice and this permission notice shall be included in
     all copies or substantial portions of the Software.
-    
+
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
