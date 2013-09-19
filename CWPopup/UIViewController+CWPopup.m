@@ -107,6 +107,7 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
         [self.popupViewController viewWillAppear:YES];
         CGRect finalFrame = [self getPopupFrameForViewController:viewControllerToPresent];
         // parallax setup if iOS7+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
             UIInterpolatingMotionEffect *interpolationHorizontal = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
             interpolationHorizontal.minimumRelativeValue = @-10.0;
@@ -117,6 +118,7 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
             [self.popupViewController.view addMotionEffect:interpolationHorizontal];
             [self.popupViewController.view addMotionEffect:interpolationVertical];
         }
+#endif
         // shadow setup
         viewControllerToPresent.view.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
         viewControllerToPresent.view.layer.shadowColor = [UIColor blackColor].CGColor;
