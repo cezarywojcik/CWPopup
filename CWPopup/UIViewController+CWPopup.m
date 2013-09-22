@@ -188,7 +188,7 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
 }
 
 - (UIImage *)getBlurredImage:(UIImage *)imageToBlur {
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0 &&) {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         return [imageToBlur applyBlurWithRadius:10.0f tintColor:[UIColor clearColor] saturationDeltaFactor:1.0 maskImage:nil];
     }
     return imageToBlur;
