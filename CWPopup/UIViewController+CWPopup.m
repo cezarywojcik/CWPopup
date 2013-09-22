@@ -16,6 +16,7 @@
 - (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage;
 @end
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
 @implementation UIImage (ImageBlur)
 // This method is taken from Apple's UIImageEffects category provided in WWDC 2013 sample code
 - (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage
@@ -148,6 +149,7 @@
     return outputImage;
 }
 @end
+#endif
 
 #define ANIMATION_TIME 0.5f
 #define STATUS_BAR_SIZE 22
@@ -357,7 +359,12 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
 }
 
 - (void)setUseBlurForPopup:(BOOL)useBlurForPopup {
-    objc_setAssociatedObject(self, &CWUseBlurForPopup, [NSNumber numberWithBool:useBlurForPopup], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0 && useBlurForPopup) {
+        NSLog(@"ERROR: Blur unavailable prior to iOS 7");
+        objc_setAssociatedObject(self, &CWUseBlurForPopup, [NSNumber numberWithBool:NO], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    } else {
+        objc_setAssociatedObject(self, &CWUseBlurForPopup, [NSNumber numberWithBool:useBlurForPopup], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
 }
 
 - (BOOL)useBlurForPopup {

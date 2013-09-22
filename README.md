@@ -14,7 +14,7 @@ CWPopup is a category on UIViewController that allows you to easily make popup v
 
 ### [CocoaPods](http://www.cocoapods.org)
 
-`pod 'CWPopup', '~> 1.2.0'`
+`pod 'CWPopup', '~> 1.2.1'`
 
 ### Manual
 
@@ -22,7 +22,7 @@ Import the directory `CWPopup` into your project. It contains the UIViewControll
 
 ### Requirements
 
-* Uses ARC
+* ARC
 * iOS 4.3
 
 ## Usage
@@ -33,6 +33,8 @@ First of all, import the category.
 You can choose to use either a fade background or a blurred background. The fade background will partially fade out the background, whereas the blurred background will apply a blur to the background. **Note:** No background animations will show if you use the blurred background as it is a static image placed on top of the view. The default setting is to use the fade background. To enable the blurred background, in your `viewDidLoad` function, add the following line of code:
 
     self.useBlurForPopup = YES;
+
+**NOTE:** Blur is only available in iOS 7+.
 
 To present a view controller:
 
