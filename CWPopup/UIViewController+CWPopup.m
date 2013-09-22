@@ -9,7 +9,9 @@
 #import "UIViewController+CWPopup.h"
 #import <objc/runtime.h>
 #import <QuartzCore/QuartzCore.h>
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
 @import Accelerate;
+#endif
 #import <float.h>
 
 @interface UIImage (ImageBlur)
