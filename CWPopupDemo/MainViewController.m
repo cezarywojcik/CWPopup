@@ -63,7 +63,7 @@
 
 // so that tapping popup view doesnt dismiss it
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    return touch.view != self.popupViewController.view;
+    return touch.view == self.view;
 }
 
 @end
