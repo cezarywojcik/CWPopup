@@ -306,7 +306,7 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
         [completion invoke];
     }
     // remove observer
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
 }
 
 #pragma mark - handling screen orientation change
