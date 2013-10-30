@@ -218,7 +218,8 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
         self.popupViewController = viewControllerToPresent;
         self.popupViewController.view.autoresizesSubviews = NO;
         self.popupViewController.view.autoresizingMask = UIViewAutoresizingNone;
-        [self.popupViewController viewWillAppear:YES];
+        [self addChildViewController:viewControllerToPresent];
+
         CGRect finalFrame = [self getPopupFrameForViewController:viewControllerToPresent];
         // parallax setup if iOS7+
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
@@ -257,6 +258,9 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
             objc_setAssociatedObject(self, &CWBlurViewKey, fadeView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
+
+        [viewControllerToPresent beginAppearanceTransition:YES animated:flag];
+
         // setup
         if (flag) { // animate
             CGRect initialFrame = CGRectMake(finalFrame.origin.x, [UIScreen mainScreen].bounds.size.height + viewControllerToPresent.view.frame.size.height/2, finalFrame.size.width, finalFrame.size.height);
@@ -266,13 +270,15 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
                 viewControllerToPresent.view.frame = finalFrame;
                 blurView.alpha = self.useBlurForPopup ? 1.0f : 0.4f;
             } completion:^(BOOL finished) {
-                [self.popupViewController viewDidAppear:YES];
+                [self.popupViewController didMoveToParentViewController:self];
+                [self.popupViewController endAppearanceTransition];
                 [completion invoke];
             }];
         } else { // don't animate
-            [self.popupViewController viewDidAppear:YES];
             viewControllerToPresent.view.frame = finalFrame;
             [self.view addSubview:viewControllerToPresent.view];
+            [self.popupViewController didMoveToParentViewController:self];
+            [self.popupViewController endAppearanceTransition];
             [completion invoke];
         }
         // if screen orientation changed
@@ -282,7 +288,9 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
 
 - (void)dismissPopupViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
     UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
-    [self.popupViewController viewWillDisappear:YES];
+    [self.popupViewController willMoveToParentViewController:nil];
+    
+    [self.popupViewController beginAppearanceTransition:NO animated:flag];
     if (flag) { // animate
         CGRect initialFrame = self.popupViewController.view.frame;
         [UIView animateWithDuration:ANIMATION_TIME delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -291,14 +299,16 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
             // self.popupViewController.view.transform = CGAffineTransformMakeRotation(M_PI/6);
             blurView.alpha = 0.0f;
         } completion:^(BOOL finished) {
-            [self.popupViewController viewDidDisappear:YES];
+            [self.popupViewController removeFromParentViewController];
+            [self.popupViewController endAppearanceTransition];
             [self.popupViewController.view removeFromSuperview];
             [blurView removeFromSuperview];
             self.popupViewController = nil;
             [completion invoke];
         }];
     } else { // don't animate
-        [self.popupViewController viewDidDisappear:YES];
+        [self.popupViewController removeFromParentViewController];
+        [self.popupViewController endAppearanceTransition];
         [self.popupViewController.view removeFromSuperview];
         [blurView removeFromSuperview];
         self.popupViewController = nil; 
