@@ -246,7 +246,7 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
         if (self.useBlurForPopup) {
             [self addBlurView];
         } else {
-            UIView *fadeView = [UIView new];
+            UIView *fadeView = [UIImageView new];
             if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
                 fadeView.frame = [UIScreen mainScreen].bounds;
             } else {
