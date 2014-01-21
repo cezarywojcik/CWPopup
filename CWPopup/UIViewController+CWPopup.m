@@ -159,10 +159,11 @@
 NSString const *CWPopupKey = @"CWPopupkey";
 NSString const *CWBlurViewKey = @"CWFadeViewKey";
 NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
+NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
 @implementation UIViewController (CWPopup)
 
-@dynamic popupViewController, useBlurForPopup;
+@dynamic popupViewController, useBlurForPopup, popupViewOffset;
 
 #pragma mark - blur view methods
 
@@ -332,7 +333,7 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
         x = ([UIScreen mainScreen].bounds.size.height - frame.size.width)/2;
         y = ([UIScreen mainScreen].bounds.size.width - frame.size.height)/2;
     }
-    return CGRectMake(x, y, frame.size.width, frame.size.height);
+    return CGRectMake(x + viewController.popupViewOffset.x, y + viewController.popupViewOffset.y, frame.size.width, frame.size.height);
 }
 
 - (void)screenOrientationChanged {
@@ -386,6 +387,15 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
     NSNumber *result = objc_getAssociatedObject(self, &CWUseBlurForPopup);
     return [result boolValue];
 
+}
+
+- (void)setPopupViewOffset:(CGPoint)popupViewOffset {
+    objc_setAssociatedObject(self, &CWPopupViewOffset, [NSValue valueWithCGPoint:popupViewOffset], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (CGPoint)popupViewOffset {
+    NSValue *offset = objc_getAssociatedObject(self, &CWPopupViewOffset);
+    return [offset CGPointValue];
 }
 
 @end
