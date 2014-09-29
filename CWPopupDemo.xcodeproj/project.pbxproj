@@ -18,25 +18,11 @@
 		CEE077A717C5BEB70012C196 /* CWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE077A617C5BEB70012C196 /* CWAppDelegate.m */; };
 		CEE077AA17C5BEB70012C196 /* CWPopupDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEE077A817C5BEB70012C196 /* CWPopupDemo.xcdatamodeld */; };
 		CEE077AC17C5BEB70012C196 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE077AB17C5BEB70012C196 /* Images.xcassets */; };
-		CEE077B317C5BEB70012C196 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE077B217C5BEB70012C196 /* XCTest.framework */; };
-		CEE077B417C5BEB70012C196 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779417C5BEB70012C196 /* Foundation.framework */; };
-		CEE077B517C5BEB70012C196 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779817C5BEB70012C196 /* UIKit.framework */; };
-		CEE077B617C5BEB70012C196 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE0779A17C5BEB70012C196 /* CoreData.framework */; };
 		CEE077CE17C5BEDA0012C196 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE077CC17C5BEDA0012C196 /* MainViewController.m */; };
 		CEE077CF17C5BEDA0012C196 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE077CD17C5BEDA0012C196 /* MainViewController.xib */; };
 		CEE077D917C5BFF30012C196 /* SamplePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE077D717C5BFF30012C196 /* SamplePopupViewController.m */; };
 		CEE077DA17C5BFF30012C196 /* SamplePopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE077D817C5BFF30012C196 /* SamplePopupViewController.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CEE077B717C5BEB70012C196 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CEE0778917C5BEB70012C196 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CEE0779017C5BEB70012C196;
-			remoteInfo = CWPopupDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CE2FCB9B17C72D1400359C70 /* UIViewController+CWPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CWPopup.h"; sourceTree = "<group>"; };
@@ -55,7 +41,6 @@
 		CEE077A617C5BEB70012C196 /* CWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWAppDelegate.m; sourceTree = "<group>"; };
 		CEE077A917C5BEB70012C196 /* CWPopupDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CWPopupDemo.xcdatamodel; sourceTree = "<group>"; };
 		CEE077AB17C5BEB70012C196 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CEE077B117C5BEB70012C196 /* CWPopupDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWPopupDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE077B217C5BEB70012C196 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CEE077CB17C5BEDA0012C196 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		CEE077CC17C5BEDA0012C196 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -74,17 +59,6 @@
 				CEE0779B17C5BEB70012C196 /* CoreData.framework in Frameworks */,
 				CEE0779917C5BEB70012C196 /* UIKit.framework in Frameworks */,
 				CEE0779517C5BEB70012C196 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CEE077AE17C5BEB70012C196 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CEE077B317C5BEB70012C196 /* XCTest.framework in Frameworks */,
-				CEE077B617C5BEB70012C196 /* CoreData.framework in Frameworks */,
-				CEE077B517C5BEB70012C196 /* UIKit.framework in Frameworks */,
-				CEE077B417C5BEB70012C196 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				CEE0779117C5BEB70012C196 /* CWPopupDemo.app */,
-				CEE077B117C5BEB70012C196 /* CWPopupDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,24 +186,6 @@
 			productReference = CEE0779117C5BEB70012C196 /* CWPopupDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CEE077B017C5BEB70012C196 /* CWPopupDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CEE077C617C5BEB80012C196 /* Build configuration list for PBXNativeTarget "CWPopupDemoTests" */;
-			buildPhases = (
-				CEE077AD17C5BEB70012C196 /* Sources */,
-				CEE077AE17C5BEB70012C196 /* Frameworks */,
-				CEE077AF17C5BEB70012C196 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CEE077B817C5BEB70012C196 /* PBXTargetDependency */,
-			);
-			name = CWPopupDemoTests;
-			productName = CWPopupDemoTests;
-			productReference = CEE077B117C5BEB70012C196 /* CWPopupDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -243,9 +198,6 @@
 				TargetAttributes = {
 					CEE0779017C5BEB70012C196 = {
 						DevelopmentTeam = QMZH6X9D3C;
-					};
-					CEE077B017C5BEB70012C196 = {
-						TestTargetID = CEE0779017C5BEB70012C196;
 					};
 				};
 			};
@@ -262,7 +214,6 @@
 			projectRoot = "";
 			targets = (
 				CEE0779017C5BEB70012C196 /* CWPopupDemo */,
-				CEE077B017C5BEB70012C196 /* CWPopupDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -277,13 +228,6 @@
 				CEE077AC17C5BEB70012C196 /* Images.xcassets in Resources */,
 				CE9AAD5417D8273100AFC34D /* mavericks.jpg in Resources */,
 				CEE077DA17C5BFF30012C196 /* SamplePopupViewController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CEE077AF17C5BEB70012C196 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,22 +247,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CEE077AD17C5BEB70012C196 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CEE077B817C5BEB70012C196 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CEE0779017C5BEB70012C196 /* CWPopupDemo */;
-			targetProxy = CEE077B717C5BEB70012C196 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CEE0779F17C5BEB70012C196 /* InfoPlist.strings */ = {
@@ -432,46 +361,6 @@
 			};
 			name = Release;
 		};
-		CEE077C717C5BEB80012C196 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CWPopupDemo.app/CWPopupDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CWPopupDemo/CWPopupDemo-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "CWPopupDemoTests/CWPopupDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		CEE077C817C5BEB80012C196 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CWPopupDemo.app/CWPopupDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CWPopupDemo/CWPopupDemo-Prefix.pch";
-				INFOPLIST_FILE = "CWPopupDemoTests/CWPopupDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -489,15 +378,6 @@
 			buildConfigurations = (
 				CEE077C417C5BEB80012C196 /* Debug */,
 				CEE077C517C5BEB80012C196 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CEE077C617C5BEB80012C196 /* Build configuration list for PBXNativeTarget "CWPopupDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CEE077C717C5BEB80012C196 /* Debug */,
-				CEE077C817C5BEB80012C196 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

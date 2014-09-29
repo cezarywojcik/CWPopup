@@ -170,12 +170,8 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
 - (UIImage *)getScreenImage {
     // frame without status bar
-    CGRect frame;
-    if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-        frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    } else {
-        frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
-    }
+    CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+
     // begin image context
     UIGraphicsBeginImageContext(frame.size);
     // get current context
@@ -200,11 +196,8 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
 - (void)addBlurView {
     UIImageView *blurView = [UIImageView new];
-    if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-        blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    } else {
-        blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
-    }
+    blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    
     blurView.alpha = 0.0f;
     blurView.image = [self getBlurredImage:[self getScreenImage]];
     [self.view addSubview:blurView];
@@ -249,11 +242,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
             [self addBlurView];
         } else {
             UIView *fadeView = [UIImageView new];
-            if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-                fadeView.frame = [UIScreen mainScreen].bounds;
-            } else {
-                fadeView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
-            }
+            fadeView.frame = [UIScreen mainScreen].bounds;
             fadeView.backgroundColor = [UIColor blackColor];
             fadeView.alpha = 0.0f;
             [self.view addSubview:fadeView];
@@ -325,15 +314,9 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
 - (CGRect)getPopupFrameForViewController:(UIViewController *)viewController {
     CGRect frame = viewController.view.frame;
-    CGFloat x;
-    CGFloat y;
-    if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-        x = ([UIScreen mainScreen].bounds.size.width - frame.size.width)/2;
-        y = ([UIScreen mainScreen].bounds.size.height - frame.size.height)/2;
-    } else {
-        x = ([UIScreen mainScreen].bounds.size.height - frame.size.width)/2;
-        y = ([UIScreen mainScreen].bounds.size.width - frame.size.height)/2;
-    }
+    CGFloat x = ([UIScreen mainScreen].bounds.size.width - frame.size.width) * 0.5;
+    CGFloat y = ([UIScreen mainScreen].bounds.size.height - frame.size.height) * 0.5;
+    
     return CGRectMake(x + viewController.popupViewOffset.x, y + viewController.popupViewOffset.y, frame.size.width, frame.size.height);
 }
 
