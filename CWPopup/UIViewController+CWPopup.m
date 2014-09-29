@@ -170,12 +170,8 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
 - (UIImage *)getScreenImage {
     // frame without status bar
-    CGRect frame;
-    if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-        frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    } else {
-        frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
-    }
+    CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+
     // begin image context
     UIGraphicsBeginImageContext(frame.size);
     // get current context
@@ -200,9 +196,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
 - (void)addBlurView {
     UIImageView *blurView = [UIImageView new];
-    if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
-        blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    }
+    blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     
     blurView.alpha = 0.0f;
     blurView.image = [self getBlurredImage:[self getScreenImage]];
