@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
   s.source = { :git => "https://github.com/cezarywojcik/CWPopup.git",
                :tag => s.version.to_s }
   s.source_files  = 'CWPopup'
-  s.requires_arc = true,
+  s.requires_arc = true
   s.compiler_flags = '-fmodules'
 end
