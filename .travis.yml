@@ -1,0 +1,5 @@
+language: objective-c
+script:
+  - xctool -scheme CWPopupDemo -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xctool test -scheme CWPopupDemo -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+
