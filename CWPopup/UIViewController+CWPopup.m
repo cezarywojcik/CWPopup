@@ -266,10 +266,18 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
         // setup
         if (flag) { // animate
             CGRect initialFrame = CGRectMake(finalFrame.origin.x, [UIScreen mainScreen].bounds.size.height + viewControllerToPresent.view.frame.size.height/2, finalFrame.size.width, finalFrame.size.height);
+            CGFloat initialAlpha = 1.0;
+            CGFloat finalAlpha = 1.0;
+            if (self.modalTransitionStyle == UIModalTransitionStyleCrossDissolve) {
+                initialFrame = finalFrame;
+                initialAlpha = 0.0;
+            }
             viewControllerToPresent.view.frame = initialFrame;
+            viewControllerToPresent.view.alpha = initialAlpha;
             [self.view addSubview:viewControllerToPresent.view];
             [UIView animateWithDuration:ANIMATION_TIME delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 viewControllerToPresent.view.frame = finalFrame;
+                viewControllerToPresent.view.alpha = finalAlpha;
                 blurView.alpha = self.useBlurForPopup ? 1.0f : 0.4f;
             } completion:^(BOOL finished) {
                 [self.popupViewController didMoveToParentViewController:self];
@@ -295,8 +303,15 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
     [self.popupViewController beginAppearanceTransition:NO animated:flag];
     if (flag) { // animate
         CGRect initialFrame = self.popupViewController.view.frame;
+        CGRect finalFrame = CGRectMake(initialFrame.origin.x, [UIScreen mainScreen].bounds.size.height + initialFrame.size.height/2, initialFrame.size.width, initialFrame.size.height);
+        CGFloat finalAlpha = 1.0;
+        if (self.modalTransitionStyle == UIModalTransitionStyleCrossDissolve) {
+            finalFrame = initialFrame;
+            finalAlpha = 0.0;
+        }
         [UIView animateWithDuration:ANIMATION_TIME delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.popupViewController.view.frame = CGRectMake(initialFrame.origin.x, [UIScreen mainScreen].bounds.size.height + initialFrame.size.height/2, initialFrame.size.width, initialFrame.size.height);
+            self.popupViewController.view.frame = finalFrame;
+            self.popupViewController.view.alpha = finalAlpha;
             // uncomment the line below to have slight rotation during the dismissal
             // self.popupViewController.view.transform = CGAffineTransformMakeRotation(M_PI/6);
             blurView.alpha = 0.0f;
