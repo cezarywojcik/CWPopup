@@ -161,10 +161,11 @@ NSString const *CWPopupKey = @"CWPopupkey";
 NSString const *CWBlurViewKey = @"CWFadeViewKey";
 NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
 NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
+NSString const *CWPopupBlurRadius = @"CWPopupBlurRadius";
 
 @implementation UIViewController (CWPopup)
 
-@dynamic popupViewController, useBlurForPopup, popupViewOffset;
+@dynamic popupViewController, useBlurForPopup, popupViewOffset, popupBlurRadius;
 
 #pragma mark - blur view methods
 
@@ -193,7 +194,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
 - (UIImage *)getBlurredImage:(UIImage *)imageToBlur {
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        return [imageToBlur applyBlurWithRadius:10.0f tintColor:[UIColor clearColor] saturationDeltaFactor:1.0 maskImage:nil];
+        return [imageToBlur applyBlurWithRadius:self.popupBlurRadius tintColor:[UIColor clearColor] saturationDeltaFactor:1.0 maskImage:nil];
     }
     return imageToBlur;
 }
@@ -412,6 +413,15 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 - (CGPoint)popupViewOffset {
     NSValue *offset = objc_getAssociatedObject(self, &CWPopupViewOffset);
     return [offset CGPointValue];
+}
+
+- (void)setPopupBlurRadius:(CGFloat)popupBlurRadius {
+    objc_setAssociatedObject(self, &CWPopupBlurRadius, [NSNumber numberWithDouble:popupBlurRadius], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (CGFloat)popupBlurRadius {
+    NSNumber *radius = objc_getAssociatedObject(self, &CWPopupBlurRadius);
+    return radius ? [radius doubleValue] : 10.0;
 }
 
 @end
