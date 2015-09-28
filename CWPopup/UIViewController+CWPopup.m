@@ -289,6 +289,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
             }];
         } else { // don't animate
             viewControllerToPresent.view.frame = finalFrame;
+            blurView.alpha = self.useBlurForPopup ? 1.0f : 0.4f;
             [self.view addSubview:viewControllerToPresent.view];
             [self.popupViewController didMoveToParentViewController:self];
             [self.popupViewController endAppearanceTransition];
