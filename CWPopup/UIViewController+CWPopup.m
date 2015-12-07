@@ -160,6 +160,8 @@
 NSString const *CWPopupKey = @"CWPopupkey";
 NSString const *CWBlurViewKey = @"CWFadeViewKey";
 NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
+NSString const *CWBgCatchTap = @"CWBgCatchTap";
+NSString const *CWCloseOnBgTap = @"CWCloseOnBgTap";
 NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
 @implementation UIViewController (CWPopup)
@@ -212,6 +214,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
     objc_setAssociatedObject(self, &CWBlurViewKey, blurView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+
 #pragma mark - present/dismiss
 
 - (void)presentPopupViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
@@ -261,6 +264,12 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
         }
         UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
 
+        if (self.bgCatchTap || self.closeOnBgTap) {
+            UITapGestureRecognizer* blurTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(blurTap)];
+            [blurView addGestureRecognizer:blurTap];
+            blurView.userInteractionEnabled=YES;
+        }
+        
         [viewControllerToPresent beginAppearanceTransition:YES animated:flag];
 
         // setup
@@ -336,6 +345,12 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
 }
 
+-(void)blurTap{
+    if(self.closeOnBgTap){
+        [self dismissPopupViewControllerAnimated:YES completion:nil];
+    }
+}
+
 #pragma mark - handling screen orientation change
 
 - (CGRect)getPopupFrameForViewController:(UIViewController *)viewController {
@@ -374,6 +389,13 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
                 // display blurView again
                 UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
                 blurView.alpha = 1.0f;
+                
+                if (self.bgCatchTap || self.closeOnBgTap) {
+                    UITapGestureRecognizer* blurTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(blurTap)];
+                    [blurView addGestureRecognizer:blurTap];
+                    blurView.userInteractionEnabled=YES;
+                }
+                
             }];
         }
     }];
@@ -399,10 +421,30 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
     }
 }
 
+-(void)setBgCatchTap:(BOOL)bgCatchTap{
+     objc_setAssociatedObject(self, &CWBgCatchTap, [NSNumber numberWithBool:bgCatchTap], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(void)setCloseOnBgTap:(BOOL)closeOnBgTap{
+    objc_setAssociatedObject(self, &CWCloseOnBgTap, [NSNumber numberWithBool:closeOnBgTap], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (BOOL)useBlurForPopup {
     NSNumber *result = objc_getAssociatedObject(self, &CWUseBlurForPopup);
     return [result boolValue];
 
+}
+
+- (BOOL)closeOnBgTap {
+    NSNumber *result = objc_getAssociatedObject(self, &CWCloseOnBgTap);
+    return [result boolValue];
+    
+}
+
+- (BOOL)bgCatchTap {
+    NSNumber *result = objc_getAssociatedObject(self, &CWBgCatchTap);
+    return [result boolValue];
+    
 }
 
 - (void)setPopupViewOffset:(CGPoint)popupViewOffset {
