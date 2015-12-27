@@ -36,10 +36,10 @@
         NSLog (@"*** error: maskImage must be backed by a CGImage: %@", maskImage);
         return nil;
     }
-
+    
     CGRect imageRect = { CGPointZero, self.size };
     UIImage *effectImage = self;
-
+    
     BOOL hasBlur = blurRadius > __FLT_EPSILON__;
     BOOL hasSaturationChange = fabs(saturationDeltaFactor - 1.) > __FLT_EPSILON__;
     if (hasBlur || hasSaturationChange) {
@@ -48,13 +48,13 @@
         CGContextScaleCTM(effectInContext, 1.0, -1.0);
         CGContextTranslateCTM(effectInContext, 0, -self.size.height);
         CGContextDrawImage(effectInContext, imageRect, self.CGImage);
-
+        
         vImage_Buffer effectInBuffer;
         effectInBuffer.data     = CGBitmapContextGetData(effectInContext);
         effectInBuffer.width    = CGBitmapContextGetWidth(effectInContext);
         effectInBuffer.height   = CGBitmapContextGetHeight(effectInContext);
         effectInBuffer.rowBytes = CGBitmapContextGetBytesPerRow(effectInContext);
-
+        
         UIGraphicsBeginImageContextWithOptions(self.size, NO, [[UIScreen mainScreen] scale]);
         CGContextRef effectOutContext = UIGraphicsGetCurrentContext();
         vImage_Buffer effectOutBuffer;
@@ -62,7 +62,7 @@
         effectOutBuffer.width    = CGBitmapContextGetWidth(effectOutContext);
         effectOutBuffer.height   = CGBitmapContextGetHeight(effectOutContext);
         effectOutBuffer.rowBytes = CGBitmapContextGetBytesPerRow(effectOutContext);
-
+        
         if (hasBlur) {
             // A description of how to compute the box kernel width from the Gaussian
             // radius (aka standard deviation) appears in the SVG spec:
@@ -112,21 +112,21 @@
         if (!effectImageBuffersAreSwapped)
             effectImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-
+        
         if (effectImageBuffersAreSwapped)
             effectImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
     }
-
+    
     // Set up output context.
     UIGraphicsBeginImageContextWithOptions(self.size, NO, [[UIScreen mainScreen] scale]);
     CGContextRef outputContext = UIGraphicsGetCurrentContext();
     CGContextScaleCTM(outputContext, 1.0, -1.0);
     CGContextTranslateCTM(outputContext, 0, -self.size.height);
-
+    
     // Draw base image.
     CGContextDrawImage(outputContext, imageRect, self.CGImage);
-
+    
     // Draw effect image.
     if (hasBlur) {
         CGContextSaveGState(outputContext);
@@ -136,7 +136,7 @@
         CGContextDrawImage(outputContext, imageRect, effectImage.CGImage);
         CGContextRestoreGState(outputContext);
     }
-
+    
     // Add in color tint.
     if (tintColor) {
         CGContextSaveGState(outputContext);
@@ -144,7 +144,7 @@
         CGContextFillRect(outputContext, imageRect);
         CGContextRestoreGState(outputContext);
     }
-
+    
     // Output image is ready.
     UIImage *outputImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -195,7 +195,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
 - (UIImage *)getBlurredImage:(UIImage *)imageToBlur {
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        return [imageToBlur applyBlurWithRadius:10.0f tintColor:[UIColor clearColor] saturationDeltaFactor:1.0 maskImage:nil];
+        return [imageToBlur applyBlurWithRadius:3.0f tintColor:[UIColor colorWithWhite:0 alpha:0.6] saturationDeltaFactor:1.0 maskImage:nil];
     }
     return imageToBlur;
 }
@@ -224,7 +224,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
         self.popupViewController.view.autoresizesSubviews = NO;
         self.popupViewController.view.autoresizingMask = UIViewAutoresizingNone;
         [self addChildViewController:viewControllerToPresent];
-
+        
         CGRect finalFrame = [self getPopupFrameForViewController:viewControllerToPresent];
         // parallax setup if iOS7+
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
@@ -263,7 +263,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
             objc_setAssociatedObject(self, &CWBlurViewKey, fadeView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
-
+        
         if (self.bgCatchTap || self.closeOnBgTap) {
             UITapGestureRecognizer* blurTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(blurTap)];
             [blurView addGestureRecognizer:blurTap];
@@ -271,7 +271,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
         }
         
         [viewControllerToPresent beginAppearanceTransition:YES animated:flag];
-
+        
         // setup
         if (flag) { // animate
             CGRect initialFrame = CGRectMake(finalFrame.origin.x, [UIScreen mainScreen].bounds.size.height + viewControllerToPresent.view.frame.size.height/2, finalFrame.size.width, finalFrame.size.height);
@@ -337,7 +337,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
         [self.popupViewController endAppearanceTransition];
         [self.popupViewController.view removeFromSuperview];
         [blurView removeFromSuperview];
-        self.popupViewController = nil; 
+        self.popupViewController = nil;
         blurView = nil;
         [completion invoke];
     }
@@ -409,7 +409,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
 - (UIViewController *)popupViewController {
     return objc_getAssociatedObject(self, &CWPopupKey);
-
+    
 }
 
 - (void)setUseBlurForPopup:(BOOL)useBlurForPopup {
@@ -422,7 +422,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 }
 
 -(void)setBgCatchTap:(BOOL)bgCatchTap{
-     objc_setAssociatedObject(self, &CWBgCatchTap, [NSNumber numberWithBool:bgCatchTap], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &CWBgCatchTap, [NSNumber numberWithBool:bgCatchTap], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 -(void)setCloseOnBgTap:(BOOL)closeOnBgTap{
@@ -432,7 +432,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 - (BOOL)useBlurForPopup {
     NSNumber *result = objc_getAssociatedObject(self, &CWUseBlurForPopup);
     return [result boolValue];
-
+    
 }
 
 - (BOOL)closeOnBgTap {
