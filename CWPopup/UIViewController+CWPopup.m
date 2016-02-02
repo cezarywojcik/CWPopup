@@ -260,7 +260,10 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
             objc_setAssociatedObject(self, &CWBlurViewKey, fadeView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
-
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cw_popupTapGesture)];
+        [blurView addGestureRecognizer:tapRecognizer];
+        blurView.userInteractionEnabled = YES;
+      
         [viewControllerToPresent beginAppearanceTransition:YES animated:flag];
 
         // setup
@@ -286,6 +289,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
             }];
         } else { // don't animate
             viewControllerToPresent.view.frame = finalFrame;
+            blurView.alpha = self.useBlurForPopup ? 1.0f : 0.4f;
             [self.view addSubview:viewControllerToPresent.view];
             [self.popupViewController didMoveToParentViewController:self];
             [self.popupViewController endAppearanceTransition];
@@ -334,6 +338,12 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
     }
     // remove observer
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+}
+
+#pragma mark - Actions
+
+- (void)cw_popupTapGesture {
+  [self dismissPopupViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - handling screen orientation change
