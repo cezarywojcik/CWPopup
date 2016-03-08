@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84021EEC1C8EB9FF002F868A /* UIViewController+CWPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84021EEB1C8EB9FF002F868A /* UIViewController+CWPopup.swift */; };
+		84021EEE1C8EBCB5002F868A /* UIViewController+CWPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84021EED1C8EBCB5002F868A /* UIViewController+CWPopup.swift */; };
 		84A458811C8EAF3400145693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A458801C8EAF3400145693 /* AppDelegate.swift */; };
 		84A458831C8EAF3400145693 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A458821C8EAF3400145693 /* ViewController.swift */; };
 		84A458861C8EAF3400145693 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A458841C8EAF3400145693 /* Main.storyboard */; };
@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		84021EEB1C8EB9FF002F868A /* UIViewController+CWPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+CWPopup.swift"; sourceTree = "<group>"; };
+		84021EED1C8EBCB5002F868A /* UIViewController+CWPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+CWPopup.swift"; path = "../../UIViewController+CWPopup.swift"; sourceTree = "<group>"; };
 		84A4587D1C8EAF3400145693 /* CWPopup-Swift-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CWPopup-Swift-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A458801C8EAF3400145693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84A458821C8EAF3400145693 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,8 +65,8 @@
 				84A458941C8EAF6E00145693 /* mavericks.jpg */,
 				84A458951C8EAF6E00145693 /* SamplePopupViewController.swift */,
 				84A458961C8EAF6E00145693 /* SamplePopupViewController.xib */,
-				84021EEB1C8EB9FF002F868A /* UIViewController+CWPopup.swift */,
 				84A458801C8EAF3400145693 /* AppDelegate.swift */,
+				84021EED1C8EBCB5002F868A /* UIViewController+CWPopup.swift */,
 				84A458821C8EAF3400145693 /* ViewController.swift */,
 				84A458841C8EAF3400145693 /* Main.storyboard */,
 				84A458871C8EAF3400145693 /* Assets.xcassets */,
@@ -152,7 +152,7 @@
 				84A458831C8EAF3400145693 /* ViewController.swift in Sources */,
 				84A458811C8EAF3400145693 /* AppDelegate.swift in Sources */,
 				84A458981C8EAF6E00145693 /* SamplePopupViewController.swift in Sources */,
-				84021EEC1C8EB9FF002F868A /* UIViewController+CWPopup.swift in Sources */,
+				84021EEE1C8EBCB5002F868A /* UIViewController+CWPopup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

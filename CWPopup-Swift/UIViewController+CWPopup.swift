@@ -315,10 +315,18 @@ extension UIViewController {
 						completion()
 					}
 				})
-				
-				// if screen orientation changed
-				NSNotificationCenter.defaultCenter().addObserver(self, selector: "screenOrientationChanged", name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+			} else {
+				viewControllerToPresent.view.frame = finalFrame;
+				view.addSubview(viewControllerToPresent.view)
+				popupViewController?.didMoveToParentViewController(self)
+				popupViewController?.endAppearanceTransition()
+				if let completion = completion {
+					completion()
+				}
 			}
+			
+			// if screen orientation changed
+			NSNotificationCenter.defaultCenter().addObserver(self, selector: "screenOrientationChanged", name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
 		}
 	}
 	
