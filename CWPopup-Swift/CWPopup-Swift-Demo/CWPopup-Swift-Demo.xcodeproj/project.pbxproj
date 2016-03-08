@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84021EEC1C8EB9FF002F868A /* UIViewController+CWPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84021EEB1C8EB9FF002F868A /* UIViewController+CWPopup.swift */; };
 		84A458811C8EAF3400145693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A458801C8EAF3400145693 /* AppDelegate.swift */; };
 		84A458831C8EAF3400145693 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A458821C8EAF3400145693 /* ViewController.swift */; };
 		84A458861C8EAF3400145693 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A458841C8EAF3400145693 /* Main.storyboard */; };
 		84A458881C8EAF3400145693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A458871C8EAF3400145693 /* Assets.xcassets */; };
 		84A4588B1C8EAF3400145693 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A458891C8EAF3400145693 /* LaunchScreen.storyboard */; };
-		84A458931C8EAF3F00145693 /* UIViewController+AIPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A458921C8EAF3F00145693 /* UIViewController+AIPopup.swift */; };
 		84A458971C8EAF6E00145693 /* mavericks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A458941C8EAF6E00145693 /* mavericks.jpg */; };
 		84A458981C8EAF6E00145693 /* SamplePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A458951C8EAF6E00145693 /* SamplePopupViewController.swift */; };
 		84A458991C8EAF6E00145693 /* SamplePopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A458961C8EAF6E00145693 /* SamplePopupViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84021EEB1C8EB9FF002F868A /* UIViewController+CWPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+CWPopup.swift"; sourceTree = "<group>"; };
 		84A4587D1C8EAF3400145693 /* CWPopup-Swift-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CWPopup-Swift-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A458801C8EAF3400145693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84A458821C8EAF3400145693 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,7 +27,6 @@
 		84A458871C8EAF3400145693 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84A4588A1C8EAF3400145693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84A4588C1C8EAF3400145693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84A458921C8EAF3F00145693 /* UIViewController+AIPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AIPopup.swift"; sourceTree = "<group>"; };
 		84A458941C8EAF6E00145693 /* mavericks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mavericks.jpg; sourceTree = "<group>"; };
 		84A458951C8EAF6E00145693 /* SamplePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SamplePopupViewController.swift; sourceTree = "<group>"; };
 		84A458961C8EAF6E00145693 /* SamplePopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplePopupViewController.xib; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 				84A458941C8EAF6E00145693 /* mavericks.jpg */,
 				84A458951C8EAF6E00145693 /* SamplePopupViewController.swift */,
 				84A458961C8EAF6E00145693 /* SamplePopupViewController.xib */,
-				84A458921C8EAF3F00145693 /* UIViewController+AIPopup.swift */,
+				84021EEB1C8EB9FF002F868A /* UIViewController+CWPopup.swift */,
 				84A458801C8EAF3400145693 /* AppDelegate.swift */,
 				84A458821C8EAF3400145693 /* ViewController.swift */,
 				84A458841C8EAF3400145693 /* Main.storyboard */,
@@ -149,10 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84A458931C8EAF3F00145693 /* UIViewController+AIPopup.swift in Sources */,
 				84A458831C8EAF3400145693 /* ViewController.swift in Sources */,
 				84A458811C8EAF3400145693 /* AppDelegate.swift in Sources */,
 				84A458981C8EAF6E00145693 /* SamplePopupViewController.swift in Sources */,
+				84021EEC1C8EB9FF002F868A /* UIViewController+CWPopup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +300,7 @@
 				84A458911C8EAF3400145693 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
