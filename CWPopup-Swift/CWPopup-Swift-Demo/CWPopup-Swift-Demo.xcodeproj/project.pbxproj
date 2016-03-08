@@ -1,0 +1,307 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84A458811C8EAF3400145693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A458801C8EAF3400145693 /* AppDelegate.swift */; };
+		84A458831C8EAF3400145693 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A458821C8EAF3400145693 /* ViewController.swift */; };
+		84A458861C8EAF3400145693 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A458841C8EAF3400145693 /* Main.storyboard */; };
+		84A458881C8EAF3400145693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A458871C8EAF3400145693 /* Assets.xcassets */; };
+		84A4588B1C8EAF3400145693 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A458891C8EAF3400145693 /* LaunchScreen.storyboard */; };
+		84A458931C8EAF3F00145693 /* UIViewController+AIPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A458921C8EAF3F00145693 /* UIViewController+AIPopup.swift */; };
+		84A458971C8EAF6E00145693 /* mavericks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A458941C8EAF6E00145693 /* mavericks.jpg */; };
+		84A458981C8EAF6E00145693 /* SamplePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A458951C8EAF6E00145693 /* SamplePopupViewController.swift */; };
+		84A458991C8EAF6E00145693 /* SamplePopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A458961C8EAF6E00145693 /* SamplePopupViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		84A4587D1C8EAF3400145693 /* CWPopup-Swift-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CWPopup-Swift-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84A458801C8EAF3400145693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		84A458821C8EAF3400145693 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		84A458851C8EAF3400145693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		84A458871C8EAF3400145693 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84A4588A1C8EAF3400145693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		84A4588C1C8EAF3400145693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84A458921C8EAF3F00145693 /* UIViewController+AIPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AIPopup.swift"; sourceTree = "<group>"; };
+		84A458941C8EAF6E00145693 /* mavericks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mavericks.jpg; sourceTree = "<group>"; };
+		84A458951C8EAF6E00145693 /* SamplePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SamplePopupViewController.swift; sourceTree = "<group>"; };
+		84A458961C8EAF6E00145693 /* SamplePopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SamplePopupViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84A4587A1C8EAF3400145693 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		84A458741C8EAF3400145693 = {
+			isa = PBXGroup;
+			children = (
+				84A4587F1C8EAF3400145693 /* CWPopup-Swift-Demo */,
+				84A4587E1C8EAF3400145693 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		84A4587E1C8EAF3400145693 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84A4587D1C8EAF3400145693 /* CWPopup-Swift-Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84A4587F1C8EAF3400145693 /* CWPopup-Swift-Demo */ = {
+			isa = PBXGroup;
+			children = (
+				84A458941C8EAF6E00145693 /* mavericks.jpg */,
+				84A458951C8EAF6E00145693 /* SamplePopupViewController.swift */,
+				84A458961C8EAF6E00145693 /* SamplePopupViewController.xib */,
+				84A458921C8EAF3F00145693 /* UIViewController+AIPopup.swift */,
+				84A458801C8EAF3400145693 /* AppDelegate.swift */,
+				84A458821C8EAF3400145693 /* ViewController.swift */,
+				84A458841C8EAF3400145693 /* Main.storyboard */,
+				84A458871C8EAF3400145693 /* Assets.xcassets */,
+				84A458891C8EAF3400145693 /* LaunchScreen.storyboard */,
+				84A4588C1C8EAF3400145693 /* Info.plist */,
+			);
+			path = "CWPopup-Swift-Demo";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84A4587C1C8EAF3400145693 /* CWPopup-Swift-Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84A4588F1C8EAF3400145693 /* Build configuration list for PBXNativeTarget "CWPopup-Swift-Demo" */;
+			buildPhases = (
+				84A458791C8EAF3400145693 /* Sources */,
+				84A4587A1C8EAF3400145693 /* Frameworks */,
+				84A4587B1C8EAF3400145693 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CWPopup-Swift-Demo";
+			productName = "CWPopup-Swift-Demo";
+			productReference = 84A4587D1C8EAF3400145693 /* CWPopup-Swift-Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84A458751C8EAF3400145693 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = __ASIAINFO__;
+				TargetAttributes = {
+					84A4587C1C8EAF3400145693 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 84A458781C8EAF3400145693 /* Build configuration list for PBXProject "CWPopup-Swift-Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 84A458741C8EAF3400145693;
+			productRefGroup = 84A4587E1C8EAF3400145693 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84A4587C1C8EAF3400145693 /* CWPopup-Swift-Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84A4587B1C8EAF3400145693 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A4588B1C8EAF3400145693 /* LaunchScreen.storyboard in Resources */,
+				84A458971C8EAF6E00145693 /* mavericks.jpg in Resources */,
+				84A458881C8EAF3400145693 /* Assets.xcassets in Resources */,
+				84A458991C8EAF6E00145693 /* SamplePopupViewController.xib in Resources */,
+				84A458861C8EAF3400145693 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84A458791C8EAF3400145693 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A458931C8EAF3F00145693 /* UIViewController+AIPopup.swift in Sources */,
+				84A458831C8EAF3400145693 /* ViewController.swift in Sources */,
+				84A458811C8EAF3400145693 /* AppDelegate.swift in Sources */,
+				84A458981C8EAF6E00145693 /* SamplePopupViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		84A458841C8EAF3400145693 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84A458851C8EAF3400145693 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		84A458891C8EAF3400145693 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84A4588A1C8EAF3400145693 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84A4588D1C8EAF3400145693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		84A4588E1C8EAF3400145693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84A458901C8EAF3400145693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "CWPopup-Swift-Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AI.CWPopup-Swift-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		84A458911C8EAF3400145693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "CWPopup-Swift-Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AI.CWPopup-Swift-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84A458781C8EAF3400145693 /* Build configuration list for PBXProject "CWPopup-Swift-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84A4588D1C8EAF3400145693 /* Debug */,
+				84A4588E1C8EAF3400145693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84A4588F1C8EAF3400145693 /* Build configuration list for PBXNativeTarget "CWPopup-Swift-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84A458901C8EAF3400145693 /* Debug */,
+				84A458911C8EAF3400145693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84A458751C8EAF3400145693 /* Project object */;
+}
