@@ -161,6 +161,7 @@ NSString const *CWPopupKey = @"CWPopupkey";
 NSString const *CWBlurViewKey = @"CWFadeViewKey";
 NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
 NSString const *CWBgCatchTap = @"CWBgCatchTap";
+NSString const *CWHideShadow = @"CWHideShadow";
 NSString const *CWCloseOnBgTap = @"CWCloseOnBgTap";
 NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
@@ -421,6 +422,12 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
     }
 }
 
+-(void)setHideShadow:(BOOL)hideShadow{
+        
+    objc_setAssociatedObject(self, &CWHideShadow, [NSNumber numberWithBool:hideShadow], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+}
+    
 -(void)setBgCatchTap:(BOOL)bgCatchTap{
     objc_setAssociatedObject(self, &CWBgCatchTap, [NSNumber numberWithBool:bgCatchTap], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
@@ -447,6 +454,11 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
     
 }
 
+
+-(BOOL)hideShadow{
+    NSNumber *result = objc_getAssociatedObject(self, &CWHideShadow);
+    return [result boolValue];
+}
 - (void)setPopupViewOffset:(CGPoint)popupViewOffset {
     objc_setAssociatedObject(self, &CWPopupViewOffset, [NSValue valueWithCGPoint:popupViewOffset], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }

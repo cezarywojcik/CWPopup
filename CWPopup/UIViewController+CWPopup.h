@@ -14,6 +14,7 @@
 @property (nonatomic, readwrite) BOOL useBlurForPopup;
 @property (nonatomic, readwrite) BOOL bgCatchTap;
 @property (nonatomic, readwrite) BOOL closeOnBgTap;
+@property (nonatomic, readwrite) BOOL hideShadow;
 @property (nonatomic, readwrite) CGPoint popupViewOffset;
 
 - (void)presentPopupViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion;
@@ -22,4 +23,5 @@
 - (BOOL)useBlurForPopup;
 - (BOOL)closeOnBgTap;
 - (BOOL)bgCatchTap;
+- (BOOL)hideShadow;
 @end
