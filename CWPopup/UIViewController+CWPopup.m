@@ -196,7 +196,7 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
 
 - (UIImage *)getBlurredImage:(UIImage *)imageToBlur {
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        return [imageToBlur applyBlurWithRadius:3.0f tintColor:[UIColor colorWithWhite:0 alpha:0.6] saturationDeltaFactor:1.0 maskImage:nil];
+      return [imageToBlur applyBlurWithRadius:1.0f tintColor:[UIColor colorWithWhite:0 alpha:0.6] saturationDeltaFactor:3.0 maskImage:nil];
     }
     return imageToBlur;
 }
@@ -208,9 +208,16 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
     } else {
         blurView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
     }
-    blurView.alpha = 0.0f;
+    blurView.alpha = 0.8f;
+    
+    
     blurView.image = [self getBlurredImage:[self getScreenImage]];
+    if (self.hideShadow) {
+        [self.popupViewController.view addSubview:blurView];
+         [self.popupViewController.view sendSubviewToBack:blurView];
+    }else{
     [self.view addSubview:blurView];
+    }
     [self.view bringSubviewToFront:self.popupViewController.view];
     objc_setAssociatedObject(self, &CWBlurViewKey, blurView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
@@ -241,13 +248,23 @@ NSString const *CWPopupViewOffset = @"CWPopupViewOffset";
         }
 #endif
         // shadow setup
-        viewControllerToPresent.view.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-        viewControllerToPresent.view.layer.shadowColor = [UIColor blackColor].CGColor;
-        viewControllerToPresent.view.layer.shadowRadius = 3.0f;
-        viewControllerToPresent.view.layer.shadowOpacity = 0.8f;
-        viewControllerToPresent.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:viewControllerToPresent.view.layer.bounds].CGPath;
-        // rounded corners
-        viewControllerToPresent.view.layer.cornerRadius = 5.0f;
+        
+        
+        if(self.hideShadow){
+            viewControllerToPresent.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.6];
+            
+        }else{
+            
+            viewControllerToPresent.view.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+            viewControllerToPresent.view.layer.shadowColor = [UIColor blackColor].CGColor;
+            viewControllerToPresent.view.layer.shadowRadius = 3.0f;
+            viewControllerToPresent.view.layer.shadowOpacity = 0.8f;
+            viewControllerToPresent.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:viewControllerToPresent.view.layer.bounds].CGPath;
+            // rounded corners
+            viewControllerToPresent.view.layer.cornerRadius = 5.0f;
+        }
+            
+      
         // blurview
         if (self.useBlurForPopup) {
             [self addBlurView];

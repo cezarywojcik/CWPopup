@@ -24,4 +24,5 @@
 - (BOOL)closeOnBgTap;
 - (BOOL)bgCatchTap;
 - (BOOL)hideShadow;
+-(void)blurTap;
 @end
